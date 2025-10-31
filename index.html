@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dfinkard Hub - Choose The Card That's Right For You</title>
+  <!-- Keep your existing CSS (no changes) -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+ <header class="header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="nav-brand">
+                <img src="https://www.dfinkardhub.com/wp-content/uploads/2024/03/dfinkards_new_logo-removebg-preview.png" alt="Dfinkard Hub Logo">
+            </div>
+            
+            <!-- Navigation Links - Centered -->
+            <div class="header-nav-links">
+                <h3 onclick="document.getElementById('why-choose').scrollIntoView({behavior: 'smooth'})">Why Choose US</h3>
+                <h3 onclick="document.getElementById('cardsList').scrollIntoView({behavior: 'smooth'})">Top Cards</h3>
+            </div>
+            
+            <!-- Apply Button -->
+            <div class="header-actions">
+                <button class="apply-btn-header" onclick="window.location.href='Apply.html'">
+                    Apply Now
+                </button>
+            </div>
+            
+           <input type="checkbox" id="mobile-menu-toggle" style="display: none;">
+<label for="mobile-menu-toggle" class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</label>
+        </div>
+    </div>
+</header>
+  <div class="hero-flex-wrapper">
+    <div class="hero-text-content">
+        <h1>Compare, apply, and get the best card in minutes.</h1>
+        <h2>Looking for the best credit card?</h2>
+        <h3>At Dfinkard Hub, we make it simple. Compare India's top credit cards — from lifetime free and cashback cards to premium travel and fuel rewards.</h3>
+        
+        <!-- APPLY BUTTON - NEW -->
+        <div class="hero-cta">
+            <button class="hero-apply-btn" onclick="window.location.href='Apply.html'">
+                Apply Now
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <span class="hero-apply-subtitle">Get approved in minutes</span>
+        </div>
+    </div>
+    
+    <div class="hero-image-content">
+        <img src="capture.png" alt="Credit Cards">
+    </div>
+</div>
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+
+          <!-- Tabs (8) -->
+          <!-- Tabs -->
+          <!-- IMPROVED TABS WITH SCROLL CONTROLS -->
+<div class="tabs-container" id="top-card">
+  <!-- LEFT ARROW BUTTON -->
+  <button class="tabs-scroll-btn scroll-left" id="scrollLeft" aria-label="Scroll left">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  
+  <div class="category-tabs" id="categoryTabs">
+    <button class="tab-btn active" data-category="lifetime-free">Life Time Free Credit Cards</button>
+    <button class="tab-btn" data-category="fuel">Fuel Credit Cards</button>
+    <button class="tab-btn" data-category="lounge">Lounge Credit Cards</button>
+    <button class="tab-btn" data-category="shopping">Shopping Credit Cards</button>
+    <button class="tab-btn" data-category="zepto">Best Cards For Zepto</button>
+    <button class="tab-btn" data-category="hdfc">HDFC Bank Credit Cards</button>
+    <button class="tab-btn" data-category="sbi">SBI Bank Credit Cards</button>
+    <button class="tab-btn" data-category="rbl">RBL Bank Credit Cards</button>
+  </div>
+  
+  <!-- RIGHT ARROW BUTTON -->
+  <button class="tabs-scroll-btn scroll-right" id="scrollRight" aria-label="Scroll right">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>
+
+          <!-- Cards -->
+          <div class="cards-wrap">
+            <div id="cardsList" class="cards-list" aria-live="polite"></div>
+          </div>
+        </div>
+  </main>
+
+  <script>
+    /* ------------ Expand/Collapse Logic ------------ */
+   
+
+    /* ------------ 8 Category Data (with detailsLink) ------------ 
+       Make sure the filenames used in detailsLink exist in the same folder.
+    -------------------------------------------------------------- */
+    const data = {
+      "lifetime-free": [
+        { title: "IDFC FIRST Millennia Credit Card", img: "image-2157.webp", sub: "On IDFC First Bank Website", rewards: "0.75% — 2.5%", joining: "₹0", annual: "₹0", type: "Reward Points", detailsLink: "life-time/idfc-first-millennia-credit-card.html" },
+        { title: "Scapia Credit Card", img: "scapiaUpdated.webp", sub: "On Scapia Federal Bank Website", rewards: "1%", joining: "₹0", annual: "₹0", type: "Reward Points", detailsLink: "credit.html" },
+        { title: "IRCTC HDFC Bank Credit Card", img: "HDFC-IRCTC-Card-1.webp", sub: "On HDFC Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/irctc-hdfc-bank-credit-card.html" },
+        { title: "HDFC Bank Pixel Play Card", img: "Pixel-Play.webp", sub: "On HDFC Bank Website", rewards: "0.75%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "hdfc/hdfc-bank-pixel-play-c.html" },
+        { title: "Yes Bank Kiwi Credit Card", img: "KiwiCard-Grid_.png", sub: "On Yes Bank Website", rewards: "1.25%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "kiwi.html" },
+        { title: "IDFC First Select Credit Card", img: "IDFC-first-SelecetCard-Grid_.png", sub: "On IDFC First Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "life-time/idfc-first-select-credit-card.html" }
+      ],
+      "fuel": [
+        { title: "IDFC FIRST Power Credit Card", img: "image-2160.webp", sub: "On IDFC First Bank Website", rewards: "Up to 6X", joining: "₹199", annual: "₹199", type: "Reward Points", detailsLink: "fuel/idfc-first-power-credit-card.html" },
+        { title: "BPCL SBI Credit Card", img: "bpcl-plat.png", sub: "On SBI Bank Website", rewards: "Up to 2.54%", joining: "₹499", annual: "₹499", type: "Reward Points", detailsLink: "fuel/bpcl-sbi-credit-card.html" },
+        { title: "IDFC FIRST Power+ Credit Card", img: "IDFC-First-Bank-HPCL-Power-Credit-Card.png", sub: "On IDFC First Bank Website", rewards: "Up to 6X", joining: "₹499", annual: "₹499", type: "Reward Points", detailsLink: "fuel/idfc-first-power-credit-card+.html" },
+        { title: "IndianOil Axis Bank Credit Card", img: "images (1).jpg", sub: "On Axis Bank Website", rewards: "Up to 4%", joining: "₹500", annual: "₹500", type: "Reward Points", detailsLink: "fuel/indianoil-axis-bank-credit-card.html" },
+        { title: "HDFC Bank Indian Oil Credit Card", img: "IOCL-HDFC.webp", sub: "On HDFC Bank Website", rewards: "Up to 5%", joining: "₹500", annual: "₹500", type: "Reward Points", detailsLink: "fuel/hdfc-bank-indian-oil-credit.html" },
+        { title: "BPCL SBI Credit Card Octane", img: "octane-front.png", sub: "On SBI Bank Website", rewards: "Up to 6.25X", joining: "₹1,499", annual: "₹1,499", type: "Reward Points", detailsLink: "fuel/bpcl-sbi-credit-card-octane.html" }
+      ],
+      "lounge": [
+        { title: "IDFC First Select Credit Card", img: "IDFC-first-SelecetCard-Grid_ (1).png", sub: "On IDFC First Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/idfc-first-select-credit-card.html" },
+        { title: "HDFC Bank Millennia Credit Card", img: "hdfc-card-1.png", sub: "On HDFC Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/hdfc-bank-millennia-credit-card.html" },
+        { title: "Tata Neu Infinity HDFC Bank Card", img: "Tata-neuCard-Grid_.png", sub: "On HDFC Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/tata-neu-infinity-hdfc-bank.html" },
+        { title: "RBL IRCTC Credit Card", img: "IRCTC-Generic-1.webp", sub: "On RBL Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/rbl-irctc-credit-card.html" },
+        { title: "ICICI Bank Coral Credit Card", img: "icici.png", sub: "On ICICI Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/icici-bank-coral-credit-card.html" },
+        { title: "IndusInd Bank Eazy Diner Card", img: "induslnd.png", sub: "On IndusInd Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/indusind-bank-eazy-diner.html" }
+      ],
+      "shopping": [
+        { title: "RBL Shoprite Credit Card", img: "Card-4.png", sub: "On RBL Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "shopping/rbl-shoprite-credit-card.html" },
+        { title: "SBI SimplySAVE Credit Card", img: "SimplySave1.webp", sub: "On SBI Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "shopping/sbi-simplysave-credit-card.html" },
+        { title: "HSBC Platinum Credit Card", img: "WhatsApp.webp", sub: "On HSBC Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "shopping/hsbc-platinum-credit-card.html" },
+        { title: "Axis Bank Buzz Credit Card", img: "images (1).jpg", sub: "On Axis Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "shopping/hdfc-bank-moneyback+.html  axis-bank-buzz-credit-card.html" },
+        { title: "HDFC Bank MoneyBack+ Card", img: "Cards.png", sub: "On HDFC Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "shopping/hdfc-bank-moneyback+.html" }
+      ],
+      "zepto": [
+        { title: "IDFC FIRST Millennia Credit Card", img: "image-2157.webp", sub: "On IDFC First Bank Website", rewards: "4%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "best-card/idfc-first-millenia-credit-card.html" },
+        { title: "Yes-Bank Kiwi Credit Card", img: "KiwiCard-Grid_.png", sub: "On Yes Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "best-card/yes-bank-kiwi-credit-card.html" },
+        { title: "IDFC First Select Credit Card", img: "IDFC-first-SelecetCard-Grid_.png", sub: "On IDFC First Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "best-card/idfc-first-select-credit-card.html" },
+        { title: "IndusInd Bank Platinum Credit ", img: "image-2155.webp", sub: "On IndusInd Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "lounge/indusind-bank-eazy-diner.html" },
+        { title: "YES BANK RIO Credit Card", img: "WhatsApp-Image-2025-05-13-at-7.28.04-PM.webp", sub: "On Yes Bank Website", rewards: "4%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "best-card/yes-bank-rio-credit-card.html" },
+        { title: "IDFC FIRST Power Credit Card", img: "image-2160.webp", sub: "On IDFC First Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "best-card/idfc-first-power-credit-card.html" }
+      ],
+      "hdfc": [
+        { title: "IRCTC HDFC Bank Credit Card", img: "HDFC-IRCTC-Card-1.webp", sub: "On HDFC Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/hdfc-bank-millennia-credit-card.html" },
+        { title: "HDFC Bank Pixel Play Credit Card", img: "Pixel-Play.webp", sub: "On HDFC Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/hdfc-bank-pixel-play-c.html" },
+        { title: "Swiggy HDFC Bank Credit Card", img: "swiggy.webp", sub: "On HDFC Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/swiggy-hdfc-bank-credit-card.html" },
+        { title: "HDFC Bank Millennia Credit Card", img: "hdfc-card-1.png", sub: "On HDFC Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "hdfc/hdfc-bank-millennia-credit-card.html" },
+        { title: "Tata Neu Infinity HDFC Bank Card", img: "Tata-neuCard-Grid_.png", sub: "On HDFC Bank Website", rewards: "1.5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "hdfc/tata-neu-infinity-hdfc-bank.html" },
+        { title: "HDFC Biz Grow Credit Card", img: "Biz-Grow.webp", sub: "On HDFC Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/hdfc-biz-grow-credit-card.html" }
+      ],
+      "sbi": [
+        { title: "SBI SimplySAVE Credit Card", img: "SimplySave1.webp", sub: "On SBI Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "sbi/sbi-simplysave-credit-card.html" },
+        { title: "BPCL SBI Credit Card", img: "bpcl-plat.png", sub: "On SBI Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "sbi/bpcl-sbi-credit-card.html" },
+        { title: "BPCL SBI Credit Card Octane", img: "octane.png", sub: "On SBI Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Rewards", detailsLink: "sbi/bpcl-sbi-credit-card-octane.html" },
+        { title: "SBI Prime Credit Card", img: "SBI-PrimeCard-Grid_.png", sub: "On SBI Bank Website", rewards: "1.5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "sbi/sbi-prime-credit-card.html" },
+        { title: "SBI Elite Credit Card", img: "SBI-EliteCard-Grid_.png", sub: "On SBI Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Travel", detailsLink: "sbi/sbi-elite-credit-card.html" }
+      ],
+      "rbl": [
+        { title: "RBL Shoprite Credit Card", img: "Card-4.png", sub: "On RBL Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "rbl/rbl-shoprite-credit-card.html" },
+        { title: "RBL IndianOil Credit Card", img: "Card-1.png", sub: "On RBL Bank Website", rewards: "1.5%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "rbl/rbl-indianoil-credit-card.html" },
+        { title: "RBL IRCTC Credit Card", img: "IRCTC-Generic-1.webp", sub: "On RBL Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "rbl/rbl-irctc-credit-card.html" },
+        { title: "IndianOil RBL Bank XTRA Credit Card", img: "Card-1.png", sub: "On RBL Bank Website", rewards: "1%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "rbl/indianoil-rbl-bank-xtra-c.html" },
+        { title: "RBL Bank Patanjali Swarn Card", img: "Card-3.png", sub: "On RBL Bank Website", rewards: "1.25%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "rbl/rbl-bank-patanjali-swarn.html" }
+      ]
+    };
+
+    const cardsList = document.getElementById('cardsList');
+    const tabs = document.querySelectorAll('.tab-btn');
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    function renderCategory(cat) {
+      const arr = data[cat] || [];
+      cardsList.innerHTML = '';
+      arr.forEach(card => {
+        // Use the card's detailsLink (exact filename) or fallback to FullDetails.html
+        const rawLink = card.detailsLink ? String(card.detailsLink).trim() : 'FullDetails.html';
+        // encodeURI to handle spaces; escapeHtml for HTML safety
+        const safeHref = escapeHtml(encodeURI(rawLink));
+
+        const el = document.createElement('article');
+        el.className = 'card';
+        el.innerHTML = `
+      <div class="img-wrap"><img class="card-img" src="${escapeHtml(card.img || '')}" alt="${escapeHtml(card.title || '')}" /></div>
+      <div class="content">
+        <div class="top">
+          <div class="title">${escapeHtml(card.title || '')}</div>
+          <div class="actions">
+            <a href="Apply.html">
+              <button class="btn">Apply Now</button>
+            </a>
+
+            <!-- Full Details opens in new tab and uses the card-specific file -->
+            <a href="${safeHref}" target="_blank" rel="noopener noreferrer">
+              <button class="btn ghost" type="button">Full Details</button>
+            </a>
+            
+          </div>
+        </div>
+        <div class="subtle">${escapeHtml(card.sub || '')}</div>
+
+        <div class="info">
+          <div class="col">Reward Rate<div class="value">${escapeHtml(card.rewards || '')}</div></div>
+          <div class="col">Joining Fee<div class="value">${escapeHtml(card.joining || '')}</div></div>
+          <div class="col">Annual Fee<div class="value">${escapeHtml(card.annual || '')}</div></div>
+          <div class="col">Reward Type<div class="value">${escapeHtml(card.type || '')}</div></div>
+        </div>
+      </div>`;
+        cardsList.appendChild(el);
+      });
+    }
+
+    renderCategory('lifetime-free');
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.setAttribute('aria-selected', 'false'));
+        btn.setAttribute('aria-selected', 'true');
+        renderCategory(btn.dataset.category);
+      });
+    });
+  </script>
+
+  <!-- View All Section -->
+<section class="view-all-section">
+    <div class="container">
+        <button class="btn-view-all" onclick="window.location.href='all-cards.html'">
+            View All Cards
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+</section>
+  </div>
+  </div>
+  </section>
+  </main>
+
+
+<section id="why-choose" class="why-choose-section">
+    <div class="why-choose-container">
+<h2 class="why-choose-heading">Why Choose Dfinkard Hub?</h2>
+        
+        <div class="why-choose-grid">
+            
+            <!-- Card 1 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 11l3 3L22 4" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="why-choose-text">
+                    <h3>Compare & Choose Smarter</h3>
+                    <p>Browse and compare hundreds of credit cards side-by-side — rewards, fees, perks, and benefits — all in one place.</p>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 8v4l3 3" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="9" stroke="#a78bfa" stroke-width="1.8"/>
+                    </svg>
+                </div>
+                <div class="why-choose-text">
+                    <h3>Personalized Recommendations</h3>
+                    <p>Get AI-powered suggestions based on your spending habits, lifestyle, and financial goals.</p>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17l-5-5" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="why-choose-text">
+                    <h3>Pre-Qualified & Instant Approvals</h3>
+                    <p>Save time with fast eligibility checks and real-time approvals on select credit card applications.</p>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="why-choose-card">
+                <div class="why-choose-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l7 4v5c0 5-3.5 9.5-7 11-3.5-1.5-7-6-7-11V6l7-4z" stroke="#a78bfa" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="why-choose-text">
+                    <h3>Zero Spam. 100% Transparency</h3>
+                    <p>No hidden fees, no random calls. Just clean, honest comparisons and secure credit card offers best aligned with your goals.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<style>
+  @media (max-width: 800px) {
+    #why-choose .container > div { 
+      grid-template-columns: 1fr !important;
+    }
+   
+    #why-choose h2 { font-size: 26px; }
+  }
+</style>
+
+
+<!-- FAQ SECTION -->
+
+
+<!-- (
+  <section id="faq" style="padding:60px 5%; box-sizing:border-box; background:#fff;">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:start;">
+    <!-- Left column: heading -->
+    <!-- <div style="padding-top:10px;">
+      <h2 style="font-size:36px; line-height:1.05; margin:0 0 12px 0; color:#0b1020;">Some Frequently<br/>asked questions</h2>
+      <p style="color:#6b7280; margin-top:12px; font-size:16px;">
+        Got questions? We’ve answered the most common ones below. Click any question to reveal the answer.
+      </p>
+    </div> -->
+
+    <!-- Right column: accordion -->
+    <!-- <div>
+      <div id="faqList" style="display:flex; flex-direction:column; gap:18px;"> -->
+
+        <!-- Accordion item template -->
+        <!-- <div class="faq-item" style="border-radius:12px; background:#fff; box-shadow:0 6px 24px rgba(28,30,50,0.06); overflow:hidden;">
+          <button class="faq-q" aria-expanded="false" style="width:100%; text-align:left; padding:20px 22px; border:0; background:transparent; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer;">
+            <span style="font-size:16px; color:#111;">What is Dfinkard Hub and how does it work?</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" style="transform:rotate(0deg); transition:transform .25s ease;">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="#0b1020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-a" style="max-height:0; overflow:hidden; transition:max-height .36s ease, padding .36s ease; padding:0 22px;">
+            <div style="padding:12px 0 22px 0; color:#6b7280; line-height:1.7;">
+              Dfinkard Hub is a credit-card comparison site that helps you compare features, rewards and fees of leading cards in India — so you can pick the best fit for your needs.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" style="border-radius:12px; background:#fff; box-shadow:0 6px 24px rgba(28,30,50,0.06); overflow:hidden;">
+          <button class="faq-q" aria-expanded="false" style="width:100%; text-align:left; padding:20px 22px; border:0; background:transparent; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer;">
+            <span style="font-size:16px; color:#111;">Can I apply for a credit card directly through Dfinkard Hub?</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" style="transform:rotate(0deg); transition:transform .25s ease;">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="#0b1020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-a" style="max-height:0; overflow:hidden; transition:max-height .36s ease, padding .36s ease; padding:0 22px;">
+            <div style="padding:12px 0 22px 0; color:#6b7280; line-height:1.7;">
+              Yes — for many cards we provide direct apply links to the issuer. After clicking “Apply” you’ll be taken to the bank’s application flow or a pre-qualification check.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" style="border-radius:12px; background:#fff; box-shadow:0 6px 24px rgba(28,30,50,0.06); overflow:hidden;">
+          <button class="faq-q" aria-expanded="false" style="width:100%; text-align:left; padding:20px 22px; border:0; background:transparent; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer;">
+            <span style="font-size:16px; color:#111;">What types of credit cards are listed on Dfinkard Hub?</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" style="transform:rotate(0deg); transition:transform .25s ease;">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="#0b1020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-a" style="max-height:0; overflow:hidden; transition:max-height .36s ease, padding .36s ease; padding:0 22px;">
+            <div style="padding:12px 0 22px 0; color:#6b7280; line-height:1.7;">
+              We list lifetime-free, cashback, travel, lounge, shopping and co-branded cards from major issuers across India.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" style="border-radius:12px; background:#fff; box-shadow:0 6px 24px rgba(28,30,50,0.06); overflow:hidden;">
+          <button class="faq-q" aria-expanded="false" style="width:100%; text-align:left; padding:20px 22px; border:0; background:transparent; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer;">
+            <span style="font-size:16px; color:#111;">Does Dfinkard Hub charge any fee for using its services?</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" style="transform:rotate(0deg); transition:transform .25s ease;">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="#0b1020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-a" style="max-height:0; overflow:hidden; transition:max-height .36s ease, padding .36s ease; padding:0 22px;">
+            <div style="padding:12px 0 22px 0; color:#6b7280; line-height:1.7;">
+              No — the comparison service is free for users. Some card issuers may have their own fees; we clearly show that on card pages.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" style="border-radius:12px; background:#fff; box-shadow:0 6px 24px rgba(28,30,50,0.06); overflow:hidden;">
+          <button class="faq-q" aria-expanded="false" style="width:100%; text-align:left; padding:20px 22px; border:0; background:transparent; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer;">
+            <span style="font-size:16px; color:#111;">How does Dfinkard Hub help me choose the right credit card?</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" style="transform:rotate(0deg); transition:transform .25s ease;">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="#0b1020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-a" style="max-height:0; overflow:hidden; transition:max-height .36s ease, padding .36s ease; padding:0 22px;">
+            <div style="padding:12px 0 22px 0; color:#6b7280; line-height:1.7;">
+              We compare rewards, fees, welcome offers and benefits. Filter by category and use our comparison tools to find cards matching your spend and goals.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> -->
+
+
+  <style>
+    @media (max-width: 900px) {
+      #faq > div { grid-template-columns: 1fr !important; }
+      #faq h2 { font-size:28px; }
+    }
+  </style>
+
+  
+  <script>
+    (function() {
+     
+      const items = document.querySelectorAll('#faq .faq-item');
+
+      items.forEach(item => {
+        const btn = item.querySelector('.faq-q');
+        const panel = item.querySelector('.faq-a');
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+         
+          if (expanded) {
+            btn.setAttribute('aria-expanded', 'false');
+            panel.style.maxHeight = null;
+            panel.style.paddingTop = '0';
+            panel.style.paddingBottom = '0';
+           
+            const chev = btn.querySelector('.chev');
+            if (chev) chev.style.transform = 'rotate(0deg)';
+          } else {
+            btn.setAttribute('aria-expanded', 'true');
+         
+            panel.style.paddingTop = '12px';
+            panel.style.paddingBottom = '22px';
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+        
+            const chev = btn.querySelector('.chev');
+            if (chev) chev.style.transform = 'rotate(180deg)';
+          }
+        });
+
+   
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+          }
+        });
+      });
+
+      
+    })();
+  </script>
+</section>
+
+  
+
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Column 1 -->
+            <div class="footer-section">
+                <h3>Dfinkard Hub</h3>
+                <p>Your trusted guide to finding the perfect credit card for your lifestyle and financial needs.</p>
+            </div>
+            
+            <!-- Column 2: Quick Links -->
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lifetime-free.html" class="footer-category-link" data-category="lifetime-free">Lifetime Free Cards</a></li>
+                    <li><a href="fuel-cards.html" class="footer-category-link" data-category="fuel">Fuel Cards</a></li>
+                    <li><a href="lounge-cards.html" class="footer-category-link" data-category="lounge">Lounge Cards</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Categories -->
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="shopping-cards.html" class="footer-category-link" data-category="shopping">Shopping Cards</a></li>
+                    <li><a href="" class="footer-category-link" data-category="zepto">Best Cards For Zepto</a></li>
+                    <li><a href="#" class="footer-category-link" data-category="hdfc">HDFC Bank Cards</a></li>
+                    <li><a href="#" class="footer-category-link" data-category="sbi">SBI Bank Cards</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 4: Support -->
+            <div class="footer-section">
+    <h4>Support</h4>
+    <ul>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+    </ul>
+</div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dfinkard Hub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+  <script src="js/script.js"></script>
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // header element (used to compute offset if header is fixed)
+      const headerEl = document.querySelector('.header');
+
+      // small helper to scroll to element with optional offset (handles fixed header)
+      function scrollToEl(targetEl) {
+        if (!targetEl) return;
+        // compute header height (if header is fixed it will be > 0)
+        const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+        // target Y position (current position + element's top relative to viewport)
+        const targetY = window.pageYOffset + targetEl.getBoundingClientRect().top - headerHeight - 8; // -8 for small gap
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+      }
+
+      // find the 3 nav headings by text (case-insensitive)
+      const navHeadings = Array.from(document.querySelectorAll('.nav-head, h3'))
+        .filter(h => h.textContent && /why choose us|top cards|faq/i.test(h.textContent.trim()));
+
+      // map text -> action
+      navHeadings.forEach(h => {
+        const txt = h.textContent.trim().toLowerCase();
+        h.style.cursor = 'pointer';
+        h.addEventListener('click', (ev) => {
+          // decide target
+          if (txt.includes('why')) {
+            const target = document.getElementById('why-choose');
+            scrollToEl(target);
+          } else if (txt.includes('top')) {
+            const target = document.getElementById('top-card');
+            scrollToEl(target);
+          } else if (txt.includes('faq')) {
+            const target = document.getElementById('faq');
+            // scroll first, then open first FAQ item after small delay
+            scrollToEl(target);
+            // open first FAQ item (if any)
+            setTimeout(() => {
+              const firstBtn = document.querySelector('#faq .faq-item .faq-q');
+              if (firstBtn) {
+                // if it's already expanded, do nothing
+                if (firstBtn.getAttribute('aria-expanded') !== 'true') {
+                  firstBtn.click();
+                } else {
+                  // already open -> ensure it's visible
+                  firstBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }
+            }, 450); // wait a bit so scroll begins/finishes
+          }
+        });
+
+        // keyboard accessibility
+        h.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            h.click();
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+
+    // Mobile Menu Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.header-nav-links');
+    
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            
+            // Toggle classes
+            this.classList.toggle('active');
+            navLinks.classList.toggle('mobile-active');
+        });
+        
+        // Close menu when clicking on nav items
+        const navItems = navLinks.querySelectorAll('h3');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('mobile-active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('mobile-active');
+            }
+        });
+    }
+});
+  </script>
+  <script>
+// ========================================
+// MOBILE MENU - FIXED VERSION
+// ========================================
+(function() {
+    'use strict';
+    
+    console.log('🚀 Initializing mobile menu...');
+    
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.header-nav-links');
+    
+    if (!navToggle || !navLinks) {
+        console.error('❌ Nav elements not found');
+        return;
+    }
+    
+    console.log('✅ Nav elements found');
+    
+    // Toggle menu function
+    function toggleMenu(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isActive = navLinks.classList.contains('mobile-menu-active');
+        
+        if (isActive) {
+            // Close menu
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('mobile-menu-active');
+            console.log('📴 Menu closed');
+        } else {
+            // Open menu
+            navToggle.classList.add('active');
+            navLinks.classList.add('mobile-menu-active');
+            console.log('📱 Menu opened');
+        }
+    }
+    
+    // Click on hamburger icon
+    navToggle.addEventListener('click', toggleMenu);
+    
+    // Click on nav items - close menu and scroll
+    const navItems = navLinks.querySelectorAll('h3');
+    console.log('Found nav items:', navItems.length);
+    
+    navItems.forEach((item, index) => {
+        item.addEventListener('click', function(e) {
+            console.log(`Clicked item ${index + 1}`);
+            
+            // Close menu after small delay
+            setTimeout(() => {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('mobile-menu-active');
+            }, 300);
+        });
+    });
+    
+    // Close menu when clicking outside (but not immediately)
+    document.addEventListener('click', function(e) {
+        const isClickInsideNav = navLinks.contains(e.target);
+        const isClickOnToggle = navToggle.contains(e.target);
+        
+        if (!isClickInsideNav && !isClickOnToggle) {
+            if (navLinks.classList.contains('mobile-menu-active')) {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('mobile-menu-active');
+                console.log('📴 Menu closed (outside click)');
+            }
+        }
+    });
+    
+    console.log('✅ Mobile menu initialized successfully');
+})();
+</script>
+
+<script>
+// ============================================
+// FOOTER CATEGORY LINKS - FUNCTIONAL
+// ============================================
+(function() {
+    'use strict';
+    
+    // Get all footer category links
+    const footerLinks = document.querySelectorAll('.footer-category-link');
+    
+    if (footerLinks.length === 0) {
+        console.log('No footer category links found');
+        return;
+    }
+    
+    console.log(`✅ Found ${footerLinks.length} footer category links`);
+    
+    footerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const category = this.getAttribute('data-category');
+            console.log('Footer link clicked:', category);
+            
+            // Scroll to tabs section
+            const tabsSection = document.getElementById('top-card');
+            if (tabsSection) {
+                tabsSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            
+            // Wait for scroll, then activate the tab
+            setTimeout(() => {
+                // Find and click the corresponding tab button
+                const targetTab = document.querySelector(`.tab-btn[data-category="${category}"]`);
+                
+                if (targetTab) {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.tab-btn').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    
+                    // Add active class to target tab
+                    targetTab.classList.add('active');
+                    
+                    // Trigger click to load cards
+                    targetTab.click();
+                    
+                    console.log('✅ Activated tab:', category);
+                } else {
+                    console.error('Tab not found for category:', category);
+                }
+            }, 600); // Wait for smooth scroll to complete
+        });
+    });
+    
+    console.log('✅ Footer links initialized');
+})();
+</script>
+
+<script>
+// ============================================
+// HANDLE HASH ON PAGE LOAD (For Footer Links)
+// ============================================
+window.addEventListener('DOMContentLoaded', function() {
+    // Check if there's a hash in URL
+    const hash = window.location.hash.substring(1); // Remove # symbol
+    
+    console.log('Page loaded with hash:', hash);
+    
+    // Check if hash matches a category
+    if (hash && data[hash]) {
+        console.log('Valid category hash detected:', hash);
+        
+        // First, scroll to tabs section
+        const tabsSection = document.getElementById('top-card');
+        if (tabsSection) {
+            setTimeout(() => {
+                tabsSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 300);
+        }
+        
+        // Then activate the tab
+        setTimeout(() => {
+            const targetTab = document.querySelector(`.tab-btn[data-category="${hash}"]`);
+            
+            if (targetTab) {
+                // Remove active from all tabs
+                document.querySelectorAll('.tab-btn').forEach(tab => {
+                    tab.classList.remove('active');
+                    tab.setAttribute('aria-selected', 'false');
+                });
+                
+                // Activate target tab
+                targetTab.classList.add('active');
+                targetTab.setAttribute('aria-selected', 'true');
+                
+                // Load cards for this category
+                renderCategory(hash);
+                
+                console.log('✅ Tab activated from hash:', hash);
+            } else {
+                console.error('❌ Tab not found for category:', hash);
+            }
+        }, 800);
+    } else if (hash === 'why-choose' || hash === 'top-card') {
+        // Handle section scrolls
+        setTimeout(() => {
+            const section = document.getElementById(hash);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 300);
+    }
+});
+</script>
+
+</body>
+
+</html>

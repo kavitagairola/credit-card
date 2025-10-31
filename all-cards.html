@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Credit Cards - Dfinkard Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="all-cards.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="nav-brand">
+                <img src="https://www.dfinkardhub.com/wp-content/uploads/2024/03/dfinkards_new_logo-removebg-preview.png" alt="Dfinkard Hub Logo">
+            </div>
+            
+            <!-- Navigation Links - Centered -->
+            <div class="header-nav-links">
+                <h3 onclick="document.getElementById('why-choose').scrollIntoView({behavior: 'smooth'})">Why Choose US</h3>
+                <h3 onclick="document.getElementById('cardsList').scrollIntoView({behavior: 'smooth'})">Top Cards</h3>
+            </div>
+            
+            <!-- Apply Button -->
+            <div class="header-actions">
+                <button class="apply-btn-header" onclick="window.location.href='Apply.html'">
+                    Apply Now
+                </button>
+            </div>
+            
+           <input type="checkbox" id="mobile-menu-toggle" style="display: none;">
+<label for="mobile-menu-toggle" class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</label>
+        </div>
+    </div>
+</header>
+
+    <!-- Page Header -->
+    <section class="all-cards-header">
+        <div class="container">
+            <a href="index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+            <h1>All Credit Cards</h1>
+            <p>Browse our complete collection of credit cards from India's leading banks</p>
+            
+            <!-- Quick Filters -->
+            <div class="quick-filters">
+                <button class="filter-btn active" data-filter="all">All Cards</button>
+                <button class="filter-btn" data-filter="lifetime-free">Lifetime Free</button>
+                <button class="filter-btn" data-filter="fuel">Fuel Rewards</button>
+                <button class="filter-btn" data-filter="lounge">Lounge Access</button>
+                <button class="filter-btn" data-filter="shopping">Shopping</button>
+                <button class="filter-btn" data-filter="zepto">Zepto</button>
+                <button class="filter-btn" data-filter="hdfc">HDFC Bank</button>
+                <button class="filter-btn" data-filter="sbi">SBI Bank</button>
+                <button class="filter-btn" data-filter="rbl">RBL Bank</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Cards Content -->
+    <main class="all-cards-content">
+        <div class="container" id="allCardsContainer">
+            <!-- Cards will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Dfinkard Hub</h3>
+                    <p>Your trusted guide to finding the perfect credit card for your lifestyle and financial needs.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="lifetime-free">Lifetime Free Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="fuel">Fuel Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="lounge">Lounge Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#" class="footer-category-link" data-category="shopping">Shopping Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="zepto">Best Cards For Zepto</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="hdfc">HDFC Bank Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="sbi">SBI Bank Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dfinkard Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // EXACT SAME DATA AS INDEX.HTML
+        const data = {
+            "lifetime-free": [
+                { title: "IDFC FIRST Millennia Credit Card", img: "image-2157.webp", sub: "On IDFC First Bank Website", rewards: "0.75% — 2.5%", joining: "₹0", annual: "₹0", type: "Reward Points", detailsLink: "life-time/idfc-first-millennia-credit-card.html" },
+                { title: "Scapia Credit Card", img: "scapiaUpdated.webp", sub: "On Scapia Federal Bank Website", rewards: "1%", joining: "₹0", annual: "₹0", type: "Reward Points", detailsLink: "credit.html" },
+                { title: "IRCTC HDFC Bank Credit Card", img: "HDFC-IRCTC-Card-1.webp", sub: "On HDFC Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/irctc-hdfc-bank-credit-card.html" },
+                { title: "HDFC Bank Pixel Play Card", img: "Pixel-Play.webp", sub: "On HDFC Bank Website", rewards: "0.75%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "hdfc/hdfc-bank-pixel-play-c.html" },
+                { title: "Yes Bank Kiwi Credit Card", img: "KiwiCard-Grid_.png", sub: "On Yes Bank Website", rewards: "1.25%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "kiwi.html" },
+                { title: "IDFC First Select Credit Card", img: "IDFC-first-SelecetCard-Grid_.png", sub: "On IDFC First Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "life-time/idfc-first-select-credit-card.html" }
+            ],
+            "fuel": [
+                { title: "IDFC FIRST Power Credit Card", img: "image-2160.webp", sub: "On IDFC First Bank Website", rewards: "Up to 6X", joining: "₹199", annual: "₹199", type: "Reward Points", detailsLink: "fuel/idfc-first-power-credit-card.html" },
+                { title: "BPCL SBI Credit Card", img: "bpcl-plat.png", sub: "On SBI Bank Website", rewards: "Up to 2.54%", joining: "₹499", annual: "₹499", type: "Reward Points", detailsLink: "fuel/bpcl-sbi-credit-card.html" },
+                { title: "IDFC FIRST Power+ Credit Card", img: "IDFC-First-Bank-HPCL-Power-Credit-Card.png", sub: "On IDFC First Bank Website", rewards: "Up to 6X", joining: "₹499", annual: "₹499", type: "Reward Points", detailsLink: "fuel/idfc-first-power-credit-card+.html" },
+                { title: "IndianOil Axis Bank Credit Card", img: "images (1).jpg", sub: "On Axis Bank Website", rewards: "Up to 4%", joining: "₹500", annual: "₹500", type: "Reward Points", detailsLink: "fuel/indianoil-axis-bank-credit-card.html" },
+                { title: "HDFC Bank Indian Oil Credit Card", img: "IOCL-HDFC.webp", sub: "On HDFC Bank Website", rewards: "Up to 5%", joining: "₹500", annual: "₹500", type: "Reward Points", detailsLink: "fuel/hdfc-bank-indian-oil-credit.html" },
+                { title: "BPCL SBI Credit Card Octane", img: "octane-front.png", sub: "On SBI Bank Website", rewards: "Up to 6.25X", joining: "₹1,499", annual: "₹1,499", type: "Reward Points", detailsLink: "fuel/bpcl-sbi-credit-card-octane.html" }
+            ],
+            "lounge": [
+                { title: "IDFC First Select Credit Card", img: "IDFC-first-SelecetCard-Grid_ (1).png", sub: "On IDFC First Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/idfc-first-select-credit-card.html" },
+                { title: "HDFC Bank Millennia Credit Card", img: "hdfc-card-1.png", sub: "On HDFC Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/hdfc-bank-millennia-credit-card.html" },
+                { title: "Tata Neu Infinity HDFC Bank Card", img: "Tata-neuCard-Grid_.png", sub: "On HDFC Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/tata-neu-infinity-hdfc-bank.html" },
+                { title: "RBL IRCTC Credit Card", img: "IRCTC-Generic-1.webp", sub: "On RBL Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/rbl-irctc-credit-card.html" },
+                { title: "ICICI Bank Coral Credit Card", img: "icici.png", sub: "On ICICI Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/icici-bank-coral-credit-card.html" },
+                { title: "IndusInd Bank Eazy Diner Card", img: "induslnd.png", sub: "On IndusInd Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "lounge/indusind-bank-eazy-diner.html" }
+            ],
+            "shopping": [
+                { title: "RBL Shoprite Credit Card", img: "Card-4.png", sub: "On RBL Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "shopping/rbl-shoprite-credit-card.html" },
+                { title: "SBI SimplySAVE Credit Card", img: "SimplySave1.webp", sub: "On SBI Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "shopping/sbi-simplysave-credit-card.html" },
+                { title: "HSBC Platinum Credit Card", img: "WhatsApp.webp", sub: "On HSBC Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "shopping/hsbc-platinum-credit-card.html" },
+                { title: "Axis Bank Buzz Credit Card", img: "images (1).jpg", sub: "On Axis Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "shopping/axis-bank-buzz-credit-card.html" },
+                { title: "HDFC Bank MoneyBack+ Card", img: "Cards.png", sub: "On HDFC Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "shopping/hdfc-bank-moneyback+.html" }
+            ],
+            "zepto": [
+                { title: "IDFC FIRST Millennia Credit Card", img: "image-2157.webp", sub: "On IDFC First Bank Website", rewards: "4%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "best-card/idfc-first-millenia-credit-card.html" },
+                { title: "Yes-Bank Kiwi Credit Card", img: "KiwiCard-Grid_.png", sub: "On Yes Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "best-card/yes-bank-kiwi-credit-card.html" },
+                { title: "IDFC First Select Credit Card", img: "IDFC-first-SelecetCard-Grid_.png", sub: "On IDFC First Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "best-card/idfc-first-select-credit-card.html" },
+                { title: "IndusInd Bank Platinum Credit", img: "image-2155.webp", sub: "On IndusInd Bank Website", rewards: "3%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "lounge/indusind-bank-eazy-diner.html" },
+                { title: "YES BANK RIO Credit Card", img: "WhatsApp-Image-2025-05-13-at-7.28.04-PM.webp", sub: "On Yes Bank Website", rewards: "4%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "best-card/yes-bank-rio-credit-card.html" }
+            ],
+            "hdfc": [
+                { title: "HDFC Bank Millennia Credit Card", img: "hdfc-card-1.png", sub: "On HDFC Bank Website", rewards: "1% - 5%", joining: "₹0", annual: "₹1,000", type: "Cashback", detailsLink: "hdfc/hdfc-bank-millennia-credit-card.html" },
+                { title: "HDFC Tata Neu Plus Credit Card",  img: "Tata-neuCard-Grid_.png", sub: "On HDFC Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "NeuCoins", detailsLink: "hdfc/hdfc-tata-neu-plus-credit-card.html" },
+                { title: "HDFC Bank Pixel Play Card", img: "Pixel-Play.webp", sub: "On HDFC Bank Website", rewards: "0.75%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "hdfc/hdfc-bank-pixel-play-c.html" },
+                { title: "IRCTC HDFC Bank Credit Card", img: "HDFC-IRCTC-Card-1.webp", sub: "On HDFC Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/irctc-hdfc-bank-credit-card.html" },
+                { title: "HDFC Bank MoneyBack+ Card", img: "Cards.png", sub: "On HDFC Bank Website", rewards: "2%", joining: "₹0", annual: "₹0", type: "Points", detailsLink: "hdfc/hdfc-bank-moneyback+.html" }
+            ],
+            "sbi": [
+                { title: "SBI SimplySAVE Credit Card", img: "SimplySave1.webp", sub: "On SBI Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "sbi/sbi-simplysave-credit-card.html" },
+                { title: "BPCL SBI Credit Card", img: "bpcl-plat.png", sub: "On SBI Bank Website", rewards: "Up to 2.54%", joining: "₹499", annual: "₹499", type: "Reward Points", detailsLink: "sbi/bpcl-sbi-credit-card.html" },
+                { title: "BPCL SBI Credit Card Octane", img: "octane-front.png", sub: "On SBI Bank Website", rewards: "Up to 6.25X", joining: "₹1,499", annual: "₹1,499", type: "Reward Points", detailsLink: "sbi/bpcl-sbi-credit-card-octane.html" }
+            ],
+            "rbl": [
+                { title: "RBL Shoprite Credit Card", img: "Card-4.png", sub: "On RBL Bank Website", rewards: "5%", joining: "₹0", annual: "₹0", type: "Cashback", detailsLink: "rbl/rbl-shoprite-credit-card.html" },
+                { title: "RBL IRCTC Credit Card", img: "IRCTC-Generic-1.webp", sub: "On RBL Bank Website", rewards: "—", joining: "₹0", annual: "₹0", type: "Lounge", detailsLink: "rbl/rbl-irctc-credit-card.html" }
+            ]
+        };
+
+        // Category Icons and Titles
+        const categoryInfo = {
+            "lifetime-free": { icon: "fa-infinity", title: "Lifetime Free Credit Cards" },
+            "fuel": { icon: "fa-gas-pump", title: "Fuel Credit Cards" },
+            "lounge": { icon: "fa-plane-departure", title: "Lounge Access Credit Cards" },
+            "shopping": { icon: "fa-shopping-cart", title: "Shopping Credit Cards" },
+            "zepto": { icon: "fa-bolt", title: "Best Cards For Zepto" },
+            "hdfc": { icon: "fa-building-columns", title: "HDFC Bank Credit Cards" },
+            "sbi": { icon: "fa-landmark", title: "SBI Bank Credit Cards" },
+            "rbl": { icon: "fa-credit-card", title: "RBL Bank Credit Cards" }
+        };
+
+        // Function to create card HTML
+        function createCardHTML(card) {
+            return `
+                <article class="card-item">
+                    <div class="card-image-wrap">
+                        <img class="card-image" 
+                             src="${card.img}" 
+                             alt="${card.title}"
+                             loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <div class="top">
+                            <h3 class="card-title">${card.title}</h3>
+                            <p class="card-subtitle">${card.sub}</p>
+                        </div>
+                        <div class="card-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Reward Rate</span>
+                                <span class="info-value">${card.rewards}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Joining Fee</span>
+                                <span class="info-value">${card.joining}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Annual Fee</span>
+                                <span class="info-value">${card.annual}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Reward Type</span>
+                                <span class="info-value">${card.type}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-apply" onclick="window.location.href='Apply.html'">Apply Now</button>
+                        <button class="btn-details" onclick="window.location.href='${card.detailsLink}'">Full Details</button>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Function to render all cards
+        function renderAllCards() {
+            const container = document.getElementById('allCardsContainer');
+            let html = '';
+
+            // Loop through each category
+            for (const [category, cards] of Object.entries(data)) {
+                const info = categoryInfo[category];
+                
+                html += `
+                    <section class="category-section" data-category="${category}">
+                        <h2 class="category-title">
+                            <i class="fa-solid ${info.icon}"></i>
+                            ${info.title}
+                        </h2>
+                        <div class="cards-list">
+                            ${cards.map(card => createCardHTML(card)).join('')}
+                        </div>
+                    </section>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // Filter functionality
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const sections = document.querySelectorAll('.category-section');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide sections
+                    sections.forEach(section => {
+                        const sectionCategory = section.getAttribute('data-category');
+                        if (filter === 'all') {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = sectionCategory === filter ? 'block' : 'none';
+                        }
+                    });
+                    
+                    // Smooth scroll
+                    setTimeout(() => {
+                        if (filter === 'all') {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                            const firstVisible = document.querySelector('.category-section[style*="display: block"]');
+                            if (firstVisible) {
+                                firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }
+                    }, 100);
+                });
+            });
+        }
+
+        // Mobile menu toggle
+        function setupMobileMenu() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.header-nav-links');
+            
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('mobile-menu-active');
+                });
+                
+                navLinks.querySelectorAll('h3').forEach(item => {
+                    item.addEventListener('click', () => {
+                        navToggle.classList.remove('active');
+                        navLinks.classList.remove('mobile-menu-active');
+                    });
+                });
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ All Cards page loaded with exact index.html data');
+            renderAllCards();
+            setupFilters();
+            setupMobileMenu();
+        });
+    </script>
+</body>
+</html>

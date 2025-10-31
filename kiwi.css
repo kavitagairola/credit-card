@@ -1,0 +1,775 @@
+:root{
+  --bg: #f6f7fb;
+  --card-bg: #fff;
+  --muted: #7d7d86;
+  --accent: #4f46e5;
+  --accent-cta: #0b5cff;
+  --accent-cta-dark: #073bb8;
+  --shadow: 0 6px 18px rgba(15,22,39,0.08);
+  --card-radius: 14px;
+  --gap: 20px;
+  --max-width: 980px; /* central width used for card & subsequent sections */
+  --page-max: 1100px; /* page wrapper max */
+  --text: #111827;
+  --muted-2: #666;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* reset box sizing */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* page */
+body{
+  margin: 0;
+  background: #eee;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 28px;
+  line-height: 1.45;
+}
+
+/* top wrapper to keep everything centered and same width */
+.card-wrap{
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* back link */
+.back{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+.back .arrow{ font-size: 16px; }
+
+/* MAIN CARD — fixed max width so other sections can match visually */
+.card{
+  display: flex;
+  gap: var(--gap);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  align-items: flex-start; /* keep action aligned to top */
+}
+
+/* thumbnail */
+.thumb{
+  flex: 0 0 220px;
+  max-width: 240px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #eee;
+}
+.thumb img{ width:100%; height:100%; object-fit:cover; display:block; background: #eee;}
+
+/* middle content */
+.content{
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-left: 6px;
+}
+.title{
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.bank{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  color: var(--muted-2);
+  font-size: 15px;
+}
+.bank img{ height: 60px; display:block; }
+
+/* description */
+.desc{
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 15.5px;
+  line-height: 1.6;
+  max-width: 680px;
+}
+
+/* right action column */
+.action{
+  flex: 0 0 160px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  align-self: flex-start;
+  margin-top: 6px;
+}
+.action > div{ text-align: right; }
+.apply-btn{
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:24px;
+  background: var(--accent-cta);
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow: 0 6px 18px rgba(11,92,255,0.12);
+  white-space:nowrap;
+  transition: transform .12s ease, background .12s ease;
+}
+.apply-btn:hover,
+.apply-btn:focus{
+  background: var(--accent-cta-dark);
+  transform: translateY(-3px);
+}
+.apply-sub{
+  display:block;
+  margin-top:8px;
+  font-size:11px;
+  color: var(--muted-2);
+}
+
+/* responsive: stack card vertically under 800px */
+@media (max-width:800px){
+  .card{ flex-direction: column; align-items:flex-start; padding:16px; }
+  .thumb{ width:100%; max-width:100%; height:220px; }
+  .action{ width:100%; justify-content:flex-start; margin-top:12px; }
+  .action > div{ text-align:left; }
+  .apply-sub{ text-align:left; }
+}
+
+/* ---------------- Features section ---------------- */
+.features-section{
+  display:flex;
+  gap:20px;
+  max-width: var(--max-width);
+  margin: 32px auto;
+  /* keep visual order same as HTML (list left, cards right) */
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* small feature list panel */
+.features-list{
+  flex:1;
+  background: var(--card-bg);
+  border-radius:14px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  padding:20px;
+}
+.features-list h3{ margin:0 0 14px 0; font-size:18px; font-weight:700; color:var(--text); }
+.features-list ul{ list-style: none; padding:0; margin:0; }
+.features-list li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  color:var(--muted-2);
+  font-size:15px;
+}
+.features-list li i{ color:var(--accent); font-size:14px; }
+
+/* features cards grid */
+.features-cards{
+  flex:2;
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap:16px;
+}
+.feature-card{
+  background:var(--card-bg);
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.feature-card:hover{ transform: translateY(-6px); box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+.feature-card .icon{ font-size:26px; margin-bottom:10px; color:var(--accent); }
+.feature-card h4{ margin:0 0 8px 0; font-size:16px; color:var(--text); }
+.feature-card ul{ padding-left:18px; margin:0; color:var(--muted-2); font-size:14px; }
+
+/* responsive features: stack */
+@media (max-width:768px){
+  .features-section{ flex-direction: column; padding:0 12px; }
+}
+
+/* ---------------- Fees / Charges ---------------- */
+.charges-card{
+  background: var(--card-bg);
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.06);
+  padding:24px;
+  max-width: var(--max-width);
+  margin: 22px auto 0;
+}
+.charges-card h2{ margin:0 0 8px 0; font-size:1.15rem; }
+.charges-card p{ color:var(--muted-2); margin:0 0 16px 0; }
+
+.charges-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap:14px 28px;
+}
+.charge-item{
+  font-size:0.95rem;
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px dashed #eee;
+  padding:6px 0;
+}
+.charge-item span:first-child{ color:#333; }
+.charge-item span:last-child{ color:var(--accent-cta); font-weight:600; }
+
+/* small screens for charges */
+@media (max-width:600px){
+  .charges-card{ padding:16px; }
+  .charge-item{ flex-direction:column; align-items:flex-start; gap:6px; }
+  .charge-item span:last-child{ margin-top:4px; }
+}
+
+/* ===== Centered Pros & Cons (2-column, white boxes) ===== */
+
+/* outer wrapper: center everything and keep same page width */
+.wrap.proscons-wrap {
+  max-width: var(--max-width);   /* same central width as card */
+  margin: 34px auto;            /* center horizontally with vertical gap */
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  justify-content: center;      /* center the inner grid */
+}
+
+/* main grid (ke tumne ya to .proscons ya .pros-cons-container use ki hogi) */
+.proscons,
+.pros-cons-container {
+  width: 100%;
+  max-width: var(--max-width);                  /* limit width to match hero/card */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);        /* 2 columns on desktop */
+  gap: 18px;                                    /* gap between cards */
+  align-items: start;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* individual card boxes (supporting both .pc-card and generic .card) */
+.pc-card,
+.pros-cons-container .card,
+.proscons .pc-card,
+.proscons .card {
+  background: #ffffff;           /* white background */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;        /* heading, description, list stack vertically */
+  min-height: 160px;             /* optional: give them a consistent min height */
+}
+
+/* heading + description + list styling */
+.proscons h3,
+.pros-cons-container h3,
+.pc-card h3,
+.pros-cons-container .card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+.proscons p,
+.pros-cons-container p,
+.pc-card p,
+.pros-cons-container .card p {
+  margin: 0 0 12px 0;
+  color: var(--muted-2);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+.proscons ol,
+.pros-cons-container ol,
+.pc-card ol,
+.pros-cons-container .card ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #333;
+  line-height: 1.6;
+}
+.proscons ol li,
+.pros-cons-container ol li,
+.pc-card ol li,
+.pros-cons-container .card ol li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* reduce horizontal gap on smaller screens and stack columns */
+@media (max-width: 1000px) {
+  .proscons,
+  .pros-cons-container {
+    gap: 14px;
+  }
+}
+@media (max-width: 820px) {
+  .proscons,
+  .pros-cons-container {
+    grid-template-columns: 1fr;   /* single column on narrow screens */
+    max-width: calc(var(--max-width) - 24px);
+    padding: 0 12px;
+  }
+}
+
+/* page centering */
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;              /* centers page horizontally */
+  padding: 0 16px;
+  display: flex;               /* 👈 center card horizontally */
+  justify-content: center;     /* 👈 center horizontally */
+}
+
+/* main white card */
+.content-card {
+  background: var(--card-bg);
+  border-radius: 28px;          /* 👈 2xl rounded corner */
+  box-shadow: var(--shadow);
+  padding: 36px 44px;
+  margin: 40px auto;            /* 👈 vertical margin, horizontal auto center */
+  display: block;
+  width: 100%;
+  max-width: 1100px;            /* 👈 keeps it centered and not too wide */
+}
+
+/* responsive padding */
+@media (max-width:720px){
+  .content-card { padding: 22px; border-radius: 18px; }
+}
+
+/* main heading */
+.content-card h1 {
+  margin: 0 0 18px 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  text-align: left;           /* 👈 optional — center heading */
+  display: block;
+  width: 100%;
+}
+
+/* sub heading */
+.section-title {
+  margin-top: 24px;
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: left;
+}
+
+/* lead paragraph styling */
+.lead p {
+  margin: 0 0 18px 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  display: block;
+  width: 100%;
+  text-align: justify;          /* 👈 optional - clean paragraph alignment */
+}
+
+/* features section */
+.features p {
+  margin: 0 0 14px 0;
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.7;
+  display: block;
+}
+
+.feature-list {
+  margin: 14px 0 0 22px;
+  color: var(--muted);
+  font-size: 15px;
+  list-style-type: disc;
+  display: block;
+}
+
+.feature-list li {
+  margin-bottom: 10px;
+  max-width: 920px;
+  display: list-item;
+  line-height: 1.6;
+}
+
+/* responsive text size for small screens */
+@media (max-width:480px){
+  .content-card h1 { font-size: 22px; }
+  .lead p, .features p, .feature-list li {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
+.page {
+    max-width: var(--maxw);
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .content-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    padding: 40px 48px;
+  }
+
+  @media (max-width:720px){
+    .content-card { padding: 22px; border-radius: 18px; }
+  }
+
+  h1 {
+    margin: 0 0 16px 0;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin: 0 0 18px 0;
+    text-align: justify;
+  }
+
+  /* ========== TABLE STYLING ========== */
+  .reward-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0 22px 0;
+    font-size: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .reward-table th {
+    background: #2d2d2d;
+    color: #fff;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .reward-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    color: var(--text);
+  }
+
+  .reward-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .reward-table td:first-child {
+    width: 55%;
+    color: var(--muted);
+  }
+
+  .reward-table td:last-child {
+    color: #1e3a8a;
+    font-weight: 600;
+  }
+
+  /* responsive table */
+  @media (max-width:600px){
+    .reward-table th, .reward-table td {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+
+  
+  .page {
+    max-width: var(--maxw);
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .content-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    text-align: left;
+    padding: 40px 48px;
+  }
+
+  @media (max-width:720px){
+    .content-card { padding: 22px; border-radius: 18px; }
+  }
+
+  /* ===== HEADINGS ===== */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 18px;
+    font-weight: 800;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 26px;
+    margin-bottom: 10px;
+  }
+
+  /* ===== PARAGRAPHS ===== */
+  p {
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.75;
+    margin: 0 0 16px 0;
+    text-align: justify;
+  }
+
+  strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  /* ===== LINKS ===== */
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== BEST ALTERNATIVE ===== */
+  .alt-card {
+    text-align: center;
+    margin-bottom: 18px;
+    font-size: 15.5px;
+  }
+
+  .alt-card strong {
+    color: var(--text);
+  }
+
+  /* ===== CONTACT DETAILS ===== */
+  ul.contact {
+    list-style: disc;
+    margin: 12px 0 0 22px;
+    padding: 0;
+  }
+  ul.contact li {
+    font-size: 15.5px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  /* center container same width used across page */
+  .page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 14px;
+    box-sizing: border-box;
+  }
+
+  h2.faq-title{
+    margin: 0 0 18px 0;
+    font-size:20px;
+    font-weight:800;
+    color:var(--text);
+  }
+
+  /* FAQ list */
+  .faq-list {
+    display:block;
+    margin: 14px 0 60px;
+    gap:12px;
+  }
+
+  .faq-item {
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow .18s ease, transform .12s ease;
+    cursor: pointer;
+  }
+  .faq-item:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(2,6,23,0.06); }
+
+  .faq-head {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex:1;
+    min-width:0;
+  }
+
+  .faq-head .q {
+    font-weight:600;
+    color:var(--text);
+    font-size:15px;
+    white-space:normal;
+  }
+
+  .faq-chev {
+    flex:0 0 28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-size:16px;
+    transition: transform .18s ease;
+  }
+
+  /* answer collapsed/expanded area */
+  .faq-answer {
+    width:100%;
+    padding: 0 6px 0 6px;
+    margin-top:10px;
+    color:var(--muted);
+    font-size:14.5px;
+    line-height:1.6;
+    display:none;
+  }
+/* center container same width used across page */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 14px;
+  box-sizing: border-box;
+  display: block;          /* ensures everything stacks vertically */
+}
+
+/* heading center aligned */
+h2.faq-title {
+  border-radius: 10px;
+  margin: 0 0 24px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  text-align: left;        /* 👈 left aligned like your screenshot */
+  display: block;
+  width: 100%;
+  
+}
+
+/* FAQ list - vertical layout */
+.faq-list {
+  display: flex;
+  flex-direction: column;  /* 👈 ensures each FAQ is stacked vertically */
+  align-items: stretch;
+  gap: 16px;               /* spacing between items */
+  width: 100%;
+  margin: 0 0 60px 0;
+  box-sizing: border-box;
+}
+
+/* individual FAQ card */
+.faq-item {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: box-shadow .18s ease, transform .12s ease;
+}
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.06);
+}
+
+/* header of question */
+.faq-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.faq-head .q {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 15px;
+  white-space: normal;
+}
+
+/* chevron icon on the right */
+.faq-chev {
+  flex: 0 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 16px;
+  transition: transform .18s ease;
+}
+
+/* answer section - hidden by default */
+.faq-answer {
+  width: 100%;
+  padding: 0 6px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+  display: none;
+}
+
+/* expanded / open state */
+.faq-item.open {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 18px 22px 20px;
+  cursor: default;
+}
+.faq-item.open .faq-chev {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+.faq-item.open .faq-answer {
+  display: block;
+}
+
+/* chevron button */
+.chev-btn {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* responsive tweaks */
+@media (max-width:720px) {
+  body { padding: 20px 12px; }
+  .faq-item { padding: 16px; }
+  .faq-head .q { font-size: 15px; }
+  .faq-answer { font-size: 15px; }
+}
+

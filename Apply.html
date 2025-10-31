@@ -1,0 +1,221 @@
+<!-- 💬 Overlay + Modal -->
+<div id="overlay" class="overlay" aria-hidden="false">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    
+    <!-- ❌ Close Button -->
+    <button class="close" id="closeBtn" aria-label="Close">✕</button>
+
+    <!-- 🏷️ Title -->
+    <h2 id="modalTitle">Apply Now</h2>
+
+    <!-- 📝 Apply Form -->
+    <form id="applyForm" class="form" novalidate>
+      <input type="text" id="name" name="name" placeholder="Name as per Aadhaar" autocomplete="name" />
+      <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number as per Aadhaar" inputmode="tel" maxlength="10"/>
+      <input type="text" id="pincode" name="pincode" placeholder="Pin Code (current residential pincode)" inputmode="numeric" maxlength="6"/>
+
+      <!-- ✅ Consent Checkbox -->
+      <label class="consent">
+        <input type="checkbox" id="consentChk" />
+        <span>By clicking on "Submit", I authorise CardGrid and its Partners to 
+          <a href="#" tabindex="-1">Show more</a>
+        </span>
+      </label>
+
+      <!-- 🔐 Get OTP Button -->
+      <button type="button" id="getOtp" class="otp-btn" disabled>Get OTP</button>
+    </form>
+  </div>
+</div>
+
+<!-- 💅 CSS Styling -->
+<style>
+  :root{
+    --overlay-bg: rgba(15, 23, 42, 0.55);
+    --modal-bg: #fff;
+    --accent: #10b981;
+    --muted: #6b7280;
+    --input-border: #e6e6e6;
+    --btn-disabled: #d6dfdc;
+  }
+
+  .overlay{
+    position:fixed; 
+    inset:0; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center;
+    background:var(--overlay-bg); 
+    z-index:1000; 
+    padding:24px;
+  }
+
+  .modal{
+    width:100%;
+    max-width:640px;
+    background:var(--modal-bg);
+    border-radius:18px;
+    box-shadow:0 14px 36px rgba(2,6,23,0.35);
+    padding:36px;
+    position:relative;
+    font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial;
+    min-height:520px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    animation:fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn{
+    from{opacity:0; transform:scale(0.95);}
+    to{opacity:1; transform:scale(1);}
+  }
+
+  .modal h2{
+    margin:0 0 20px 0;
+    font-size:22px;
+    color:#0f172a;
+    font-weight:700;
+  }
+
+  /* ❌ Close Button */
+  .close{
+    position:absolute;
+    right:18px;
+    top:16px;
+    background:transparent;
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+    color:#111827;
+  }
+
+  .form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    flex:1;
+    justify-content:flex-start;
+  }
+
+  .form input[type="text"], 
+  .form input[type="tel"]{
+    width:100%;
+    padding:14px 16px;
+    border-radius:10px;
+    border:1px solid var(--input-border);
+    font-size:15px;
+    box-sizing:border-box;
+    height:48px;
+  }
+
+  .form input::placeholder{ color:#9aa3a8; }
+
+  .consent{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:14px;
+    color:var(--muted);
+    margin-top:8px;
+  }
+  .consent input{ width:18px; height:18px; margin-top:4px; }
+  .consent a{ color:inherit; text-decoration:underline; opacity:0.9; }
+
+  .otp-btn{
+    margin-top:16px;
+    width:100%;
+    padding:14px;
+    border-radius:999px;
+    border:none;
+    font-weight:700;
+    font-size:16px;
+    height:52px;
+    background:var(--btn-disabled);
+    color:#fff;
+    cursor:not-allowed;
+  }
+
+  .otp-btn.enabled{
+    background:var(--accent);
+    cursor:pointer;
+  }
+
+  @media (max-width:520px){
+    .modal{
+      max-width:100%;
+      min-height:480px;
+      padding:20px;
+      border-radius:14px;
+    }
+    .modal h2{ font-size:18px; }
+    .form input[type="text"], .form input[type="tel"]{
+      height:44px; padding:12px; font-size:14px;
+    }
+    .otp-btn{ height:48px; font-size:15px; padding:12px; }
+    .close{ right:12px; top:10px; font-size:20px; }
+  }
+</style>
+
+<!-- ⚙️ JavaScript -->
+<script>
+  // modal open automatically
+  window.addEventListener('load', () => {
+    openModal();
+  });
+
+  const overlay = document.getElementById('overlay');
+  const closeBtn = document.getElementById('closeBtn');
+
+  // ❌ Close pe click → Home page redirect
+  closeBtn.addEventListener('click', () => {
+    window.location.href = 'index.html';  // 👈 yahan apna home page file name lagao
+  });
+
+  overlay.addEventListener('click', (e)=> { 
+    if(e.target === overlay){
+      window.location.href = 'index.html'; // background click → home redirect
+    }
+  });
+
+  function openModal(){
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('name').focus();
+  }
+
+  // ✅ Enable OTP button jab fields + checkbox sahi fill ho
+  const nameEl = document.getElementById('name'),
+        mobileEl = document.getElementById('mobile'),
+        pinEl = document.getElementById('pincode'),
+        chk = document.getElementById('consentChk'),
+        otpBtn = document.getElementById('getOtp');
+
+  function validateEnable(){
+    const nameOk = nameEl.value.trim().length > 2;
+    const mobileOk = /^[6-9]\d{9}$/.test(mobileEl.value.trim());
+    const pinOk = /^\d{6}$/.test(pinEl.value.trim());
+    if(nameOk && mobileOk && pinOk && chk.checked){
+      otpBtn.disabled = false;
+      otpBtn.classList.add('enabled');
+    } else {
+      otpBtn.disabled = true;
+      otpBtn.classList.remove('enabled');
+    }
+  }
+
+  [nameEl, mobileEl, pinEl, chk].forEach(el=>{
+    el.addEventListener('input', validateEnable);
+    el.addEventListener('change', validateEnable);
+  });
+
+  // 🔐 OTP send hone ka demo
+  otpBtn.addEventListener('click', ()=>{
+    if(otpBtn.disabled) return;
+    otpBtn.textContent = 'Sending...';
+    setTimeout(()=> {
+      otpBtn.textContent = 'Get OTP';
+      alert('OTP sent to ' + mobileEl.value);
+    }, 900);
+  });
+</script>

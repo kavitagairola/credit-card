@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Us - Dfinkard Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- ✅ ADDED: Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    :root{
+      --page-bg:#f3f7fb;
+      --card-bg:#ffffff;
+      --panel-bg:#ffffff;
+      --muted:#6b7a86;
+      --brand:#2b6cb0; /* link color */
+      --border:#d9e6f2;
+      --shadow:0 8px 20px rgba(11,30,50,0.06);
+      --radius:12px;
+      --container-width:880px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--page-bg);font-family:Inter, system-ui, -apple-system, 'Helvetica Neue', Arial;color:#0b1b2b}
+
+    .wrap{max-width:var(--container-width);margin:48px auto;padding:20px}
+
+    /* ✅ ADDED: Back button styles */
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:20px;
+      color:#111;
+      text-decoration:none;
+      font-weight:600;
+      font-size:15px;
+      transition:all 0.3s ease;
+    }
+    .back-link:hover{
+      color:#2b6cb0;
+      gap:12px;
+    }
+    .back-link i{
+      font-size:16px;
+    }
+
+    .outer-card{background:linear-gradient(180deg, #ffffff, #fbfdff);border-radius:var(--radius);border:1px solid var(--border);padding:28px;box-shadow:var(--shadow)}
+    h1{margin:0 0 12px 0;font-size:28px;font-weight:700}
+    hr.sep{border:0;border-top:1px solid #e6eef6;margin:12px 0 18px 0}
+    p.lead{margin:0 0 18px 0;color:var(--muted);line-height:1.5;font-size:16px}
+
+    .info-panel{background:var(--panel-bg);border-radius:10px;padding:22px;border:1px solid #eef6fb}
+    .info-item{margin:16px 0}
+    .info-item strong{display:block;color:#102232;margin-bottom:6px;font-size:15px}
+    .info-item .value{color:var(--muted);font-size:14px;line-height:1.6}
+
+    a.link{color:var(--brand);text-decoration:none;transition:color 0.3s ease}
+    a.link:hover{text-decoration:underline;color:#1a4d7e}
+
+    /* small responsive tweak */
+    @media (max-width:560px){
+      .wrap{padding:12px}
+      .outer-card{padding:18px}
+      h1{font-size:24px}
+    }
+  </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="https://www.dfinkardhub.com/wp-content/uploads/2024/03/dfinkards_new_logo-removebg-preview.png" alt="Dfinkard Hub Logo">
+                </a>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="header-nav-links" id="navMenu">
+                <h3 onclick="window.location.href='index.html#why-choose'">Why Choose US</h3>
+                <h3 onclick="window.location.href='index.html#top-card'">Top Cards</h3>
+            </div>
+            
+            <!-- Apply Button -->
+            <div class="header-actions">
+                <button class="apply-btn-header" onclick="window.location.href='Apply.html'">
+                    Apply Now
+                </button>
+            </div>
+            
+            <!-- Hamburger Toggle -->
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <div class="wrap" role="main">
+        <!-- ✅ ADDED: Back button -->
+        <a href="index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+
+        <div class="outer-card" aria-label="Contact us card">
+            <h1>Contact Us</h1>
+            <hr class="sep" />
+            <p class="lead">For any questions, concerns, or requests regarding your queries or personal data, please contact us:</p>
+
+            <div class="info-panel" role="region" aria-label="Contact details">
+                <div class="info-item">
+                    <strong>Company Name:</strong>
+                    <div class="value">Dfinkard Hub</div>
+                </div>
+
+                <div class="info-item">
+                    <strong>Operated by:</strong>
+                    <div class="value">Nxtify Technologies Pvt. Ltd.</div>
+                </div>
+
+                <div class="info-item">
+                    <strong>Address:</strong>
+                    <div class="value">WZ-1, FIRST FLOOR, TATAR PUR TAGORE GARDEN, Tagore Garden, New Delhi, West Delhi, Delhi - 110027</div>
+                </div>
+
+                <div class="info-item">
+                    <strong>Email:</strong>
+                    <div class="value">
+                        <a class="link" href="mailto:info@dfinkardhub.com">info@dfinkardhub.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <strong>Customer Support:</strong>
+                    <div class="value">
+                        <a class="link" href="mailto:support@dfinkardhub.com">support@dfinkardhub.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <strong>Phone:</strong>
+                    <div class="value">
+                        <a class="link" href="tel:+917037703790">+91 70377 03790</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <strong>Website:</strong>
+                    <div class="value">
+                        <a class="link" href="https://www.dfinkardhub.com" target="_blank" rel="noopener">www.dfinkardhub.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <strong>Working Hours:</strong>
+                    <div class="value">Monday to Friday, 10:00 AM - 6:00 PM (IST)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Footer with Working Category Links -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Column 1 -->
+                <div class="footer-section">
+                    <h3>Dfinkard Hub</h3>
+                    <p>Your trusted guide to finding the perfect credit card for your lifestyle and financial needs.</p>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="lifetime-free">Lifetime Free Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="fuel">Fuel Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="lounge">Lounge Cards</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3: Categories -->
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#" class="footer-category-link" data-category="shopping">Shopping Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="zepto">Best Cards For Zepto</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="hdfc">HDFC Bank Cards</a></li>
+                        <li><a href="#" class="footer-category-link" data-category="sbi">SBI Bank Cards</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4: Support -->
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dfinkard Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ✅ ADDED: Mobile Menu Script -->
+    <script>
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.querySelector('.header-nav-links');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    navLinks.style.display = 'flex';
+                } else {
+                    navLinks.style.display = 'none';
+                }
+            });
+        }
+
+        // Close menu when clicking on nav items
+        document.querySelectorAll('.header-nav-links h3').forEach(link => {
+            link.addEventListener('click', function() {
+                if (menuToggle) {
+                    menuToggle.checked = false;
+                    if (window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- ✅ ADDED: Footer Category Links Script (Same as index.html) -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Get all footer category links
+        const footerLinks = document.querySelectorAll('.footer-category-link');
+        
+        if (footerLinks.length === 0) {
+            console.log('No footer category links found');
+            return;
+        }
+        
+        console.log(`✅ Found ${footerLinks.length} footer category links`);
+        
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const category = this.getAttribute('data-category');
+                console.log('Footer link clicked:', category);
+                
+                // Redirect to index.html with category hash
+                window.location.href = `index.html#${category}`;
+            });
+        });
+        
+        console.log('✅ Footer links initialized');
+    })();
+    </script>
+
+<!-- ✅ MOBILE MENU SCRIPT -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Contact page - Mobile menu starting...');
+    
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.header-nav-links');
+    
+    if (!navToggle || !navLinks) {
+        console.error('❌ Elements not found');
+        return;
+    }
+    
+    // Toggle menu on hamburger click
+    navToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        navLinks.classList.toggle('mobile-menu-active');
+        console.log('Menu toggled');
+    });
+    
+    // Close menu when clicking on nav items
+    navLinks.querySelectorAll('h3').forEach(item => {
+        item.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('mobile-menu-active');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('mobile-menu-active');
+        }
+    });
+    
+    console.log('✅ Mobile menu ready!');
+});
+</script>
+</body>
+</html>
